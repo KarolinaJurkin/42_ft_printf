@@ -6,10 +6,11 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:07:27 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/02/16 14:12:33 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/02/21 20:43:01 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>
 
@@ -41,10 +42,10 @@ int	ft_count_plc(const char *s)
 	return (count);
 }
 
-char	*write_arg(char *arg, char c)
+void	write_arg(va_list args, char c)
 {
 	if (c == 'c')
-		ft_putchar_fd(c, 1);
+		ft_putchar_fd(va_arg(args, int), 1);
 }
 
 int	ft_printf(const char *s, ...)
@@ -52,20 +53,27 @@ int	ft_printf(const char *s, ...)
 	va_list	args;
 	int		i;
 	int		plc;
-	char	*arg;
 
 	va_start(args, s);
 	i = 0;
 	plc = ft_count_plc(s);
-	arg = va_arg(args, char*);
 	while (s[i] != '\0')
 	{
-		while (s[i] != '%')
-		{
-		write(1, &s[i], 1);
-		i++;
-		}
 		if (s[i] == '%')
-			write_arg(arg, s[i + 1]);
+		{
+			i++;
+			write_arg(args, s[i]);
+		}
+		else
+			write(1, &s[i], 1);
+		i++;
 	}
+	va_end(args);
+	return(0);
+}
+
+int	main(void)
+{
+	ft_printf("llls %c", 'k');
+	return (0);
 }
