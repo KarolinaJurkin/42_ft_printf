@@ -6,13 +6,14 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:07:27 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/02/21 20:43:01 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/02/22 18:40:12 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 int	ft_count_plc(const char *s)
 {
@@ -36,44 +37,49 @@ int	ft_count_plc(const char *s)
 			count++;
 			i += 2;
 		}
-		else
-			i++;
+		i++;
 	}
 	return (count);
 }
 
-void	write_arg(va_list args, char c)
+int	write_arg(va_list args, char c)
 {
+	int	count;
+
+	count = 0;
 	if (c == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
+		count += ft_putchar_int(va_arg(args, int), 1);
+	if (c == 's')
+		count += ft_putstr_int(va_arg(args, char*), 1);
+	if (c == 'i')
+		count += ft_putnbr_int(va_arg(args, int), 1);
+	return (count);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	int		i;
-	int		plc;
-
+	// int		plc;
+	int		count;
+	
 	va_start(args, s);
 	i = 0;
-	plc = ft_count_plc(s);
+	// plc = ft_count_plc(s);
+	count = 0;
 	while (s[i] != '\0')
 	{
 		if (s[i] == '%')
 		{
 			i++;
-			write_arg(args, s[i]);
+			count += write_arg(args, s[i]);
 		}
 		else
 			write(1, &s[i], 1);
 		i++;
+		count++;
 	}
 	va_end(args);
-	return(0);
-}
-
-int	main(void)
-{
-	ft_printf("llls %c", 'k');
-	return (0);
+	printf("\ncount: %d\n", count);
+	return(count - 1);
 }
