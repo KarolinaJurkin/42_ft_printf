@@ -6,14 +6,14 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:07:27 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/02/22 18:40:12 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/02/27 20:27:35 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libftprintf.h"
 #include <stdarg.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int	ft_count_plc(const char *s)
 {
@@ -51,8 +51,12 @@ int	write_arg(va_list args, char c)
 		count += ft_putchar_int(va_arg(args, int), 1);
 	if (c == 's')
 		count += ft_putstr_int(va_arg(args, char*), 1);
-	if (c == 'i')
+	if (c == 'i' || c == 'd')
 		count += ft_putnbr_int(va_arg(args, int), 1);
+	if (c == 'u')
+		count += ft_putnbr_uns(va_arg(args, int), 1);
+	if (c == 'x' || c == 'X')
+		count += ft_putnbr_hex(c, va_arg(args, int), 1);
 	return (count);
 }
 
