@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:07:27 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/08 17:26:20 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/20 17:19:04 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ int	write_arg(va_list args, char c)
 	if (c == '%')
 		write(1, "%", 1);
 	if (c == 'p')
-	{
-		write(1, "0x", 2);
-		count += 2;
 		count += ft_putptr_int(va_arg(args, uintptr_t), 1);
-	}
 	return (count);
 }
 

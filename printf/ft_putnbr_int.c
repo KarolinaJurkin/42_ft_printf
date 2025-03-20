@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:29:04 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/08 17:12:51 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/20 16:40:40 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 int	ft_putnbr_int(int n, int fd)
 {
 	int	output;
-	int	count;
+	int	len;
+	int	nbr;
 
-	count = 0;
+	len = count(n);
+	nbr = len;
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 11);
@@ -28,14 +30,14 @@ int	ft_putnbr_int(int n, int fd)
 	{
 		ft_putchar_int('-', fd);
 		n *= -1;
-		count++;
+		nbr++;
 	}
 	output = reverse(n, 10);
-	while (output)
+	while (output >= 0 && len > 0)
 	{
 		ft_putchar_int((output % 10) + '0', fd);
 		output /= 10;
-		count++;
+		len--;
 	}
-	return (count);
+	return (nbr);
 }
