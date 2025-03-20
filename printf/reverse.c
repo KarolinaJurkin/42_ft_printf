@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_int.c                                    :+:      :+:    :+:   */
+/*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 20:29:04 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/08 17:12:51 by kjurkin          ###   ########.fr       */
+/*   Created: 2025/03/08 16:32:23 by kjurkin           #+#    #+#             */
+/*   Updated: 2025/03/13 19:53:03 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libftprintf.h"
-
-int	ft_putnbr_int(int n, int fd)
+int	reverse(unsigned int n, int div)
 {
 	int	output;
-	int	count;
 
-	count = 0;
-	if (n == -2147483648)
+	output = 0;
+	while (n)
 	{
-		write(fd, "-2147483648", 11);
-		return (11);
+		output = output * div + (n % div);
+		n /= div;
 	}
-	if (n < 0)
-	{
-		ft_putchar_int('-', fd);
-		n *= -1;
-		count++;
-	}
-	output = reverse(n, 10);
-	while (output)
-	{
-		ft_putchar_int((output % 10) + '0', fd);
-		output /= 10;
-		count++;
-	}
-	return (count);
+	return (output);
 }

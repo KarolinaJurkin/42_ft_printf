@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:07:27 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/03 19:57:43 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/08 17:26:20 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	write_arg(va_list args, char c)
 	if (c == 'u')
 		count += ft_putnbr_uns(va_arg(args, int), 1);
 	if (c == 'x' || c == 'X')
-		count += ft_putnbr_hex(c, va_arg(args, int), 1);
+		count += ft_putnbr_hex(c, va_arg(args, unsigned int), 1);
 	if (c == '%')
 		write(1, "%", 1);
 	if (c == 'p')
