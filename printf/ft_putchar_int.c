@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 19:05:05 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/03 19:59:19 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/26 17:27:50 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 int	ft_putchar_int(char c, int fd)
 {
 	write(fd, &c, 1);
-	return (1);
+	return (0);
 }

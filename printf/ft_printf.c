@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:07:27 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/20 17:19:04 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/26 17:27:32 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,5 @@ int	ft_printf(const char *s, ...)
 		count++;
 	}
 	va_end(args);
-	return (count - 1);
+	return (count);
 }

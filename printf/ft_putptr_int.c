@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:00:16 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/20 17:18:36 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/26 17:30:48 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_putptr_int(uintptr_t n, int fd)
 	if (n == 0)
 	{
 		write(1, "(nil)", 5);
-		return (5);
+		return (4);
 	}
 	write(1, "0x", 2);
 	count += 2;
@@ -38,5 +38,5 @@ int	ft_putptr_int(uintptr_t n, int fd)
 		else
 			count += ft_putchar_int((n % 16) + 'a' - 10, fd);
 	}
-	return (count);
+	return (count - 1);
 }

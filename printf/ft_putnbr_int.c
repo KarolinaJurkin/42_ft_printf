@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 20:29:04 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/20 16:40:40 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/26 17:28:07 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	ft_putnbr_int(int n, int fd)
 		output /= 10;
 		len--;
 	}
-	return (nbr);
+	return (nbr - 1);
 }

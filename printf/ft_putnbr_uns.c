@@ -6,7 +6,7 @@
 /*   By: kjurkin <kjurkin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 18:25:35 by kjurkin           #+#    #+#             */
-/*   Updated: 2025/03/20 16:44:19 by kjurkin          ###   ########.fr       */
+/*   Updated: 2025/03/26 17:28:16 by kjurkin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ int	ft_putnbr_uns(unsigned int n, int fd)
 		ft_putnbr_uns(n / 10, fd);
 		ft_putchar_int((n % 10) + '0', fd);
 	}
-	return (count);
+	return (count - 1);
 }
